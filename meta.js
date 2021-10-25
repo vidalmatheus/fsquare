@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 module.exports = {
   prompts: {
     name: {
@@ -18,6 +20,11 @@ module.exports = {
   },
   skipInterpolation: "frontend/**/*.vue",
 	complete: (data, {chalk}) => {
+    fs.rename(`${data.destDirName}/__project__`, `${data.destDirName}/${data.name}`, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
 		console.log(chalk.green('\nProject created \\o/!'));
 		msg = `\n${chalk.bold('To get started:')}
     ${chalk.blueBright(`
