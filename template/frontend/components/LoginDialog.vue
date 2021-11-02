@@ -68,6 +68,7 @@ export default {
       this.loading = true
       this.error = false
       api.auth.login(this.username, this.password).then(res => {
+        console.log(res)
         const user = res.user
         const authenticated = res.authenticated
         if (user && authenticated) {

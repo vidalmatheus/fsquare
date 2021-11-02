@@ -3,13 +3,9 @@ import { mockasync } from './mockutils'
 
 export default {
   login (username, password) {
-    let loggedUser = {}
-    if (username === 'mark' && password === '123') {
-      loggedUser = zuck
-    }
     return mockasync({
       authenticated: true,
-      user: loggedUser
+      user: zuck
     }).then(response => response.data)
   },
   logout () {
