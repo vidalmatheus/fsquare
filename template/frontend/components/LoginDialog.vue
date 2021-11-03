@@ -16,12 +16,6 @@
             required
             @keyup.enter="login()"
           />
-          <small
-            v-if="error"
-            style="color: red"
-          >
-            Wrong user or password
-          </small>
         </v-container>
       </v-card-text>
       <v-btn
@@ -53,8 +47,7 @@ export default {
       visible: false,
       loading: false,
       username: '',
-      password: '',
-      error: false
+      password: ''
     }
   },
   methods: {
@@ -64,24 +57,34 @@ export default {
     close () {
       this.visible = false
     },
-    login () {
+    async login () {
       this.loading = true
-      this.error = false
-      api.auth.login(this.username, this.password).then(res => {
-        const user = res.user
-        const authenticated = res.authenticated
-        if (user && authenticated) {
+      try {
+        const res = await api.auth.login(this.username, this.password)
+        const err = res.error || res.warning
+        if (err) {
+          this.$store.commit('toast/open', {
+            message: err,
+            color: res.error ? 'error' : 'warning'
+          })
+          return
+        }
+        if (res) {
           this.$store.commit('auth/setCurrentUser', res)
           this.$store.commit('toast/open', {
-            message: 'Welcome to your f-square app!',
+            message: `Welcome, ${res.first_name}!`,
             color: 'blue'
           })
           this.visible = false
-        } else {
-          this.error = true
         }
+      } catch (err) {
+        this.$store.commit('toast/open', {
+          message: err,
+          color: 'error'
+        })
+      } finally {
         this.loading = false
-      })
+      }
     }
   }
 }

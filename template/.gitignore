@@ -1,3 +1,7 @@
 __pycache__
+.vscode
+.pytest_cache/
 *.pyc
-/{{name}}.log
+.coverage
+/__project__.log
+htmlcov/

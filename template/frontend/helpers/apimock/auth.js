@@ -1,24 +1,20 @@
 import { zuck } from './db/users'
 import { mockasync } from './mockutils'
 
+let keepLoggedIn = true
+
 export default {
   login (username, password) {
-    let loggedUser = {}
-    if (username === 'mark' && password === '123') {
-      loggedUser = zuck
-    }
-    return mockasync({
-      authenticated: true,
-      user: loggedUser
-    }).then(response => response.data)
+    return mockasync(zuck)
   },
   logout () {
-    return mockasync({}).then(response => response.data)
+    keepLoggedIn = false
+    return mockasync({})
   },
   whoami () {
     return mockasync({
-      authenticated: true,
+      authenticated: keepLoggedIn,
       user: zuck
-    }).then(response => response.data)
+    })
   }
 }

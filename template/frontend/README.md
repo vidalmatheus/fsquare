@@ -1,4 +1,4 @@
-# {{name}} - frontend
+# __project__ - frontend
 
 node v16.11.1 (npm v8.0.0)
 

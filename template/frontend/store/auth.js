@@ -1,25 +1,12 @@
+import api from '~api'
+
 export const state = () => ({
-  authenticated: false,
-  currentUser: {}
+  currentUser: undefined
 })
 
 export const mutations = {
-  setCurrentUser (state, { user, authenticated }) {
+  setCurrentUser (state, user) {
     state.currentUser = user
-    state.authenticated = authenticated
-    console.log(state)
-
-    if (user) {
-      if (user.permissions === undefined) {
-        user.permissions = {}
-      }
-    }
-  },
-  updateCurrentUser (state, props) {
-    Object.assign(state.currentUser, props)
-  },
-  removeCurrentUser (state) {
-    state.currentUser = null
   }
 }
 
@@ -27,11 +14,18 @@ export const getters = {
   loggedIn (state) {
     return !!(
       state.currentUser &&
-      state.authenticated &&
       state.currentUser.permissions
     )
-  },
-  userId (state) {
-    return state.currentUser ? state.currentUser.id : null
+  }
+}
+
+export const actions = {
+  async whoami ({ commit }) {
+    const data = await api.auth.whoami()
+    if (data.authenticated) {
+      commit('setCurrentUser', data.user)
+    } else {
+      commit('setCurrentUser', null)
+    }
   }
 }

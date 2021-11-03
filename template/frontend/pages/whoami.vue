@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <pre>loggedIn: {{ loggedIn }}</pre>
-    <pre>{{ currentUserJson }}</pre>
+    <pre v-if="loggedIn">{{ currentUserJson }}</pre>
   </v-container>
 </template>
 
