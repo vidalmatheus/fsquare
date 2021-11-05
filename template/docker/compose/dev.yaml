@@ -1,0 +1,42 @@
+version: '3'
+services:
+  postgres-db:
+      image: postgres
+      container_name: postgres-db
+      hostname: postgres-db
+      environment:
+        POSTGRES_USER: "${DJANGO_DB_USER}"
+        POSTGRES_DB: "${DJANGO_DB_NAME}"
+        POSTGRES_PASSWORD: "${DJANGO_DB_PASSWORD}"
+      ports:
+        - 5432:5432
+      volumes:
+        - ../dkdata/postgres:/var/lib/postgresql/data
+      restart: always
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    network_mode: "host"
+    volumes:
+      - ./nginx/default_local:/etc/nginx/conf.d/default.conf
+
+  metabase-app:
+    image: metabase/metabase
+    container_name: metabase
+    restart: always
+    hostname: metabase
+    volumes:
+      - ../dkdata/metabase:/dev/random
+    ports:
+      - 3002:3000
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_USER: "${DJANGO_DB_USER}"
+      MB_DB_PASS: "${DJANGO_DB_PASSWORD}"
+      MB_DB_HOST: localhost
+      MB_DB_PORT: "${DJANGO_DB_PORT}"
+    depends_on:
+      - postgres-db
+
