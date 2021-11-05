@@ -1,0 +1,33 @@
+upstream django {
+    server localhost:8000;
+}
+
+upstream nuxt {
+    server localhost:3000;
+}
+
+upstream metabase {
+    server metabase:3002;
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location ~ ^/(admin|api|static) {
+        proxy_pass      http://django;
+    }
+
+    location / {
+        proxy_pass      http://nuxt;
+    }
+}
+
+server {
+    listen 80;
+    server_name metabase;
+
+    location / {
+        proxy_pass      http://metabase;
+    }
+}

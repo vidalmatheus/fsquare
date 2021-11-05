@@ -10,7 +10,7 @@ class UserSerializer(BaseSerializer):
             'first_name': user.first_name,
             'last_name': user.last_name,
             'email': user.email,
-            'avatar': user.profile.photo_url,
+            'avatar': user.profile.photo_url if hasattr(user, 'profile') else '',
             'permissions': {
                 'ADMIN': user.is_superuser,
                 'STAFF': user.is_staff,

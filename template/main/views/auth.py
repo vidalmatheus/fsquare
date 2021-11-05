@@ -29,7 +29,7 @@ def login(request):
         user = User.objects.select_related('profile').get(username=username)
     except User.DoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
-    if user.profile.is_blocked or not user.check_password(password):
+    if (hasattr(user, 'profile') and user.profile.is_blocked) or not user.check_password(password):
         return JsonResponse({'error': 'Wrong password'}, status=401)
     if not user.is_active:
         user.is_active = True

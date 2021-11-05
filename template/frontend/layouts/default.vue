@@ -88,7 +88,7 @@
                 v-on="on"
               >
                 <v-avatar size="36px">
-                  <img :src="loggedUser.avatar">
+                  <img :src="userAvatar">
                 </v-avatar>
               </v-btn>
             </template>
@@ -96,7 +96,7 @@
               <v-list two-line>
                 <v-list-item>
                   <v-list-item-avatar>
-                    <img :src="loggedUser.avatar">
+                    <img :src="userAvatar">
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>
@@ -194,6 +194,9 @@ export default {
     },
     loggedUser () {
       return this.$store.state.auth.currentUser
+    },
+    userAvatar () {
+      return this.loggedUser.avatar || 'https://graph.facebook.com/4/picture?width=300&height=300'
     }
   },
   methods: {

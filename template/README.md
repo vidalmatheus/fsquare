@@ -1,3 +1,3 @@
-# __project__
+# {{name}}
 
 ## {{description}}

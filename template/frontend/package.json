@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "PORT=3001 nuxt",
     "dev:disable-mock": "API_MOCK=0 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
