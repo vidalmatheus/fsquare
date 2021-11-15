@@ -156,7 +156,7 @@ echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"
 pip3.10 install virtualenv
 cd projects
 mkdir .virtualenv
-python3.10 -m virtualenv $project_name
+python3.10 -m virtualenv .virtualenv/$project_name
 . ~/projects/.virtualenv/$project_name/bin/activate
 cd $project_name
 
