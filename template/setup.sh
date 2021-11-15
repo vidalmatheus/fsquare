@@ -112,12 +112,11 @@ case $installdocker in [nN][oO]|[nN]);;*)
   sudo docker run hello-world
 
   echo -e "${GREEN}\n\t Adding your user to docker group${RESTORE}\n"
-  echo -e "${GREEN}\n\t You need to logoff and login for that${RESTORE}\n"
   sudo usermod -aG docker $USER
 esac
 
 
-case $installdocker in [nN][oO]|[nN]);;*)
+case $installdockercompose in [nN][oO]|[nN]);;*)
   echo -e "${GREEN}\n\t 5. Installing docker-compose${RESTORE}\n"
   sudo curl -L https://github.com/docker/compose/releases/download/$COMPOSER_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
@@ -175,3 +174,7 @@ pip --version
 
 
 echo -e "${GREEN}\nYou are good to go! \o/ \nYou can use ${YELLOW}${project_name}${RESTORE} ${GREEN}anywhere to go to your project \o/\n${RESTORE}"
+
+case $installdocker in [nN][oO]|[nN]);;*)
+  echo -e "${YELLOW}You need to logoff and login for running docker without sudo${RESTORE}\n"
+esac
