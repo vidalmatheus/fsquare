@@ -151,12 +151,13 @@ export DJANGO_DB_PASSWORD=${project_name}
 export DJANGO_DB_HOST=localhost
 export DJANGO_DB_PORT=5432" | sudo tee -a ~/.bashrc >> /dev/null
 
-# Create a virtualenv for the project
+
+echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"
 pip3.10 install virtualenv
 cd projects
 mkdir .virtualenv
-virtualenv -p python3.10 .virtualenv/$project_name >> /dev/null;
-. ~/projects/.virtualenv/$project_name/bin/activate;
+python3.10 -m virtualenv $project_name
+. ~/projects/.virtualenv/$project_name/bin/activate
 cd $project_name
 
 
