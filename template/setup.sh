@@ -113,7 +113,7 @@ case $installdocker in [nN][oO]|[nN]);;*)
 
   echo -e "${GREEN}\n\t Adding your user to docker group${RESTORE}\n"
   echo -e "${GREEN}\n\t You need to logoff and login for that${RESTORE}\n"
-  sudo usermod -aG docker ubuntu
+  sudo usermod -aG docker $USER
 esac
 
 
