@@ -1,6 +1,6 @@
 export const state = () => ({
   opened: false,
-  message: '',
+  message: 'Ocorreu um erro desconhecido',
   color: '',
   timeout: 6000,
   animationDuration: 500,

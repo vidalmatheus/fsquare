@@ -2,7 +2,7 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
+      mini-variant
       :clipped="clipped"
       fixed
       app
@@ -16,7 +16,17 @@
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-tooltip right>
+              <template #activator="{ on, attrs }">
+                <v-icon
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  {{ item.icon }}
+                </v-icon>
+              </template>
+              <span>{{ item.title }}</span>
+            </v-tooltip>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -29,89 +39,94 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariantEvent()"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-spacer />
-      <router-link to="/">
-        <v-avatar
-          rounded
-          size="32"
-        >
-          <v-img
-            src="/icon.png"
-            alt="F-square"
-            width="32"
-            height="32"
-          />
-        </v-avatar>
-      </router-link>
-      <v-toolbar-title class="px-2">
-        F-square
-      </v-toolbar-title>
-      <v-spacer />
-      <v-btn
-        v-if="!loggedIn"
-        text
-        ripple
-        class="ma-0 ml-5"
-        @click="openLoginDialog($event)"
-      >
-        Login
-      </v-btn>
-      <v-menu
-        v-else
-        offset-y
-      >
-        <template #activator="{ on, attrs }">
+      <v-layout row>
+        <v-flex xs4>
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+        </v-flex>
+        <v-flex row xs4 class="text-center align-self-center">
+          <v-row>
+            <v-col class="text-right pr-1">
+              <router-link to="/">
+                <v-avatar
+                  rounded
+                  size="32"
+                >
+                  <v-img
+                    src="/icon.png"
+                    alt="F-square"
+                    width="32"
+                    height="32"
+                  />
+                </v-avatar>
+              </router-link>
+            </v-col>
+            <v-col class="text-left pl-1">
+              <v-toolbar-title>
+                F-square
+              </v-toolbar-title>
+            </v-col>
+          </v-row>
+        </v-flex>
+        <v-flex xs4 class="text-right align-self-center">
           <v-btn
-            class="ma-0 ml-5"
-            icon
-            v-bind="attrs"
-            v-on="on"
+            v-if="!loggedIn"
+            text
+            ripple
+            @click="openLoginDialog()"
           >
-            <v-avatar size="36px">
-              <img :src="loggedUser.avatar">
-            </v-avatar>
+            Login
           </v-btn>
-        </template>
-        <v-card class="no-padding">
-          <v-list two-line>
-            <v-list-item>
-              <v-list-item-avatar>
-                <img :src="loggedUser.avatar">
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ loggedUser.first_name }} {{ loggedUser.last_name }}
-                </v-list-item-title>
-                <v-list-item-subtitle>
-                  {{ loggedUser.email }}
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          <v-divider />
-          <v-list two-line>
-            <v-list-item @click.stop="rightDrawer = !rightDrawer">
-              <v-list-item-content>
-                <v-list-item-title>
-                  Notificações
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item @click="logout()">
-              <v-list-item-content>
-                <v-list-item-title>Log out</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-menu>
+          <v-menu
+            v-else
+            offset-y
+          >
+            <template #activator="{ on, attrs }">
+              <v-btn
+                class="ma-0 ml-5"
+                icon
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-avatar size="36px">
+                  <img :src="userAvatar">
+                </v-avatar>
+              </v-btn>
+            </template>
+            <v-card class="no-padding">
+              <v-list two-line>
+                <v-list-item>
+                  <v-list-item-avatar>
+                    <img :src="userAvatar">
+                  </v-list-item-avatar>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      {{ loggedUser.first_name }} {{ loggedUser.last_name }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      {{ loggedUser.email }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <v-divider />
+              <v-list two-line>
+                <v-list-item @click.stop="rightDrawer = !rightDrawer">
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Notificações
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item @click="logout()">
+                  <v-list-item-content>
+                    <v-list-item-title>Log out</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-card>
+          </v-menu>
+        </v-flex>
+      </v-layout>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -159,16 +174,15 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Home',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Whoami',
+          icon: 'mdi-account-box',
+          title: 'Who am I?',
           to: '/whoami'
         }
       ],
-      miniVariant: true,
       right: true,
       rightDrawer: false,
       title: 'fSquare'
@@ -180,32 +194,31 @@ export default {
     },
     loggedUser () {
       return this.$store.state.auth.currentUser
+    },
+    userAvatar () {
+      return this.loggedUser.avatar || 'https://graph.facebook.com/4/picture?width=300&height=300'
     }
   },
   methods: {
-    miniVariantEvent () {
-      if (this.miniVariant) {
-        this.miniVariant = false
-        this.drawer = true
-        return
-      }
-      this.miniVariant = true
-    },
-    openLoginDialog (evt) {
+    openLoginDialog () {
       this.$refs.LoginDialog.open()
-      evt.stopPropagation()
     },
-    logout () {
-      api.auth.logout().then(() => {
-        this.$store.commit('auth/removeCurrentUser')
+    async logout () {
+      try {
+        await api.auth.logout()
+        this.$store.commit('auth/setCurrentUser', null)
         this.$store.commit('toast/open', {
-          message: 'See ya!',
-          color: 'blue'
+          message: 'See ya!'
         })
         if (this.$route.name !== 'index') {
           this.$router.push({ name: 'index' })
         }
-      })
+      } catch (err) {
+        this.$store.commit('toast/open', {
+          message: err,
+          color: 'error'
+        })
+      }
     }
   }
 }

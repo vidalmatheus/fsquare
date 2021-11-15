@@ -1,11 +1,10 @@
 <template>
   <v-snackbar
-    v-if="opened"
     v-model="opened"
     :timeout="timeout"
     :color="color"
     rounded
-    transition="v-scroll-y-transition"
+    :transition="transition"
   >
     {{ message }}
 
@@ -15,7 +14,7 @@
         text
         v-bind="attrs"
         v-on="on"
-        @click.native="close"
+        @click="close"
       >
         Fechar
       </v-btn>
@@ -37,6 +36,9 @@ export default {
     },
     color () {
       return this.$store.state.toast.color
+    },
+    transition () {
+      return this.opened ? 'scroll-y-reverse-transition' : 'scroll-y-transition'
     }
   },
   methods: {

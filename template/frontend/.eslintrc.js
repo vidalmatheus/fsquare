@@ -17,6 +17,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'no-console': 0,
-    'arrow-parens': ['error', 'as-needed']
+    'arrow-parens': ['error', 'as-needed'],
+    'array-callback-return': 0
   }
 }

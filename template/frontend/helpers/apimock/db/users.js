@@ -4,6 +4,8 @@ export const zuck = {
   first_name: 'Mark',
   last_name: 'Zuckerberg',
   email: 'zuck@facebook.com',
-  notifications_enabled: true,
-  avatar: 'https://www.personality-database.com/profile_images/446.png'
+  avatar: 'https://www.personality-database.com/profile_images/446.png',
+  permissions: {
+    ADMIN: true
+  }
 }
