@@ -10,6 +10,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && \
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
+        vim \
         wait-for-it \
         curl \
         jq \
