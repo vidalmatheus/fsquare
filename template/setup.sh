@@ -8,6 +8,7 @@ LBLU='\033[1;34m'
 
 export PYTHON_VERSION=3.10.0
 export PYTHON_MAJOR=3
+export NODE_VERSION=16
 export COMPOSER_VERSION=1.29.2  # ver https://github.com/docker/compose/releases
 
 
@@ -25,7 +26,7 @@ echo -e "${LBLU}                Configure your installation\n${RESTORE}"
 
 read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Project name: "${RESTORE})" project_name
 read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Python ${PYTHON_VERSION} (Y/n): "${RESTORE})" installpython
-read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"nvm (Y/n): "${RESTORE})" installnvm
+read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Node.js ${NODE_VERSION} and NVM (Y/n): "${RESTORE})" installnode
 read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Vue.js (Y/n): "${RESTORE})" installvue
 read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Docker (Y/n): "${RESTORE})" installdocker
 read -p "$(echo -e ${BLUE}"? "${RESTORE}${LBLU}"Docker Compose (Y/n): "${RESTORE})" installdockercompose
@@ -69,8 +70,8 @@ case $installpython in [nN][oO]|[nN]);;*)
   sudo rm -rf Python-${PYTHON_VERSION}
 esac
 
-case $installnvm in [nN][oO]|[nN]);;*)
-  echo -e "${GREEN}\n\t 2. Installing nvm${RESTORE}\n"
+case $installnode in [nN][oO]|[nN]);;*)
+  echo -e "${GREEN}\n\t 2. Installing NVM${RESTORE}\n"
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -78,7 +79,7 @@ case $installnvm in [nN][oO]|[nN]);;*)
 
   nvm --version
 
-  # Install & use node 16
+  echo -e "${GREEN}\n\t Install & use Node 16${RESTORE}\n"
   nvm install 16
   node --version
 esac
