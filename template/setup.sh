@@ -144,11 +144,11 @@ echo "alias ${project_name}='cd ~/projects/${project_name};
         nvm use 16;
         source dev.sh'
 
-export DJANGO_DB_NAME=${project_name}
-export DJANGO_DB_USER=${project_name}
-export DJANGO_DB_PASSWORD=${project_name}
-export DJANGO_DB_HOST=localhost
-export DJANGO_DB_PORT=5432" | sudo tee -a ~/.bashrc >> /dev/null
+export DB_NAME=${project_name}
+export DB_USER=${project_name}
+export DB_PASSWORD=${project_name}
+export DB_HOST=localhost
+export DB_PORT=5432" | sudo tee -a ~/.bashrc >> /dev/null
 
 
 echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"
