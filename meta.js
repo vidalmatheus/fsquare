@@ -20,7 +20,7 @@ module.exports = {
   },
   skipInterpolation: "frontend/**/*.vue",
 	complete: (data, {chalk}) => {
-    fs.rename(`${data.destDirName}/{{name}}`, `${data.destDirName}/${data.name}`, (err) => {
+    fs.rename(`${data.destDirName}/__project__`, `${data.destDirName}/${data.name}`, (err) => {
       if (err) {
         console.log(err);
       }
