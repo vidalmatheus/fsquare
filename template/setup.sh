@@ -86,6 +86,7 @@ esac
 
 case $installvue in [nN][oO]|[nN]);;*)
   echo -e "${GREEN}\n\t 3. Installing vue, vue/cli and vue/cli-init${RESTORE}\n"
+  nvm use 16
   npm install vue
   npm install -g @vue/cli
   npm install -g @vue/cli-init
