@@ -19,7 +19,7 @@ def projtask(func):
 
 @projtask
 def dkdb(c):
-    c.run("docker run --name db --rm \
+    c.run("docker run --name postgres-db --rm \
         -e POSTGRES_USER={{name}} -e POSTGRES_PASSWORD={{name}} \
         -p 5432:5432 \
         -v $PROJ_BASE/docker/dkdata/postgres:/var/lib/postgresql/data \
