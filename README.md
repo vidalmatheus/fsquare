@@ -154,7 +154,14 @@ export DB_USER=${project_name}
 export DB_PASSWORD=${project_name}
 export DB_HOST=localhost
 export DB_PORT=5432
-export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc >> /dev/null
+export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc
+```
+
+# 8. Configuring hosts
+```bash
+echo "
+127.0.0.1       metabase
+127.0.0.1       mock" | sudo tee -a /etc/hosts
 ```
 
 # 8. Create a virtualenv for the project

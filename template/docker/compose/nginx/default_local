@@ -16,7 +16,7 @@ upstream metabase {
 
 server {
     listen 80;
-    server_name localhost;
+    server_name {{name}};
 
     location ~ ^/(admin|api|static) {
         proxy_pass      http://django;
