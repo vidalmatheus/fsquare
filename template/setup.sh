@@ -181,3 +181,5 @@ echo -e "${GREEN}\nYou are good to go! \o/ \nYou can use ${YELLOW}${project_name
 case $installdocker in [nN][oO]|[nN]);;*)
   echo -e "${YELLOW}You need to logoff and login for running docker without sudo${RESTORE}\n"
 esac
+
+source dev.sh
