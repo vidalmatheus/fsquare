@@ -149,7 +149,8 @@ export DB_NAME=${project_name}
 export DB_USER=${project_name}
 export DB_PASSWORD=${project_name}
 export DB_HOST=localhost
-export DB_PORT=5432" | sudo tee -a ~/.bashrc >> /dev/null
+export DB_PORT=5432
+export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc >> /dev/null
 
 
 echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"

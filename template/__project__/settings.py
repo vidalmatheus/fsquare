@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'main',
+    'cachalot',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SKIP_SLEEP = False
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': '{{name}}default',
+    }
+}
+
+CACHALOT_ENABLED = os.getenv('CACHALOT_ENABLED', '1') == '1'
+CACHALOT_TIMEOUT = 60 * 60
+CACHALOT_ONLY_CACHABLE_TABLES = (
+    # put here which tables you'd like to cache queries
+    'main_profile'
+)
