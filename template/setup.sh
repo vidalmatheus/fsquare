@@ -158,7 +158,7 @@ export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc >> /dev/null
 echo -e "${GREEN}\n\t Configuring hosts${RESTORE}\n"
 echo "
 127.0.0.1       metabase
-127.0.0.1       mock" | sudo tee -a ~/etc/hosts >> /dev/null
+127.0.0.1       mock" | sudo tee -a /etc/hosts >> /dev/null
 
 
 echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"
