@@ -140,7 +140,8 @@ case $haveinstance in [yY][oO]|[yY]);;*)
   vue init vidalmatheus/fsquare $project_name
 esac
 
-# Create alias for the project
+
+echo -e "${GREEN}\n\t Creating a alias for the project${RESTORE}\n"
 echo "alias ${project_name}='cd ~/projects/${project_name};
         source ~/projects/.virtualenv/${project_name}/bin/activate;
         nvm use 16;
@@ -152,6 +153,12 @@ export DB_PASSWORD=${project_name}
 export DB_HOST=localhost
 export DB_PORT=5432
 export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc >> /dev/null
+
+
+echo -e "${GREEN}\n\t Configuring hosts${RESTORE}\n"
+echo "
+127.0.0.1       metabase
+127.0.0.1       mock" | sudo tee -a ~/etc/hosts >> /dev/null
 
 
 echo -e "${GREEN}\n\t Creating a virtualenv for the project${RESTORE}\n"

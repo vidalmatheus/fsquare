@@ -6,6 +6,10 @@ upstream nuxt {
     server localhost:3000;
 }
 
+upstream mockednuxt {
+    server localhost:3001;
+}
+
 upstream metabase {
     server metabase:3002;
 }
@@ -20,6 +24,15 @@ server {
 
     location / {
         proxy_pass      http://nuxt;
+    }
+}
+
+server {
+    listen 80;
+    server_name mock;
+
+    location / {
+        proxy_pass      http://mockednuxt;
     }
 }
 
