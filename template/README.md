@@ -11,9 +11,15 @@
 4. Check if everything is okay on the actual front-end on localhost:3000 (go back one step if needed)
 5. Push your changes! \o/
 
-# Design System
+# System Design
 
 <p align="center">
-  <img src="..//img/designsystem.png" />
+  <img src="..//img/system_design.png" />
+</p>
+
+# Pipe-and-Filter Pattern
+
+<p align="center">
+  <img src="..//img/filteronproject.png" />
 </p>
 
