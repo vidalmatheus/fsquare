@@ -8,7 +8,7 @@ LBLU='\033[1;34m'
 
 HOST={{name}}.example.com
 
-# {{name}}
+{{name}}
 
 export PROJ_BASE="$(dirname ${BASH_SOURCE[0]})"
 CD=$(pwd)
