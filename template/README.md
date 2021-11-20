@@ -14,12 +14,12 @@
 # System Design
 
 <p align="center">
-  <img src="..//img/system_design.png" />
+  <img src="https://github.com/vidalmatheus/fsquare/blob/master/img/system_design.png?raw=true" />
 </p>
 
 # Pipe-and-Filter Pattern
 
 <p align="center">
-  <img src="..//img/filteronproject.png" />
+  <img src="https://github.com/vidalmatheus/fsquare/blob/master/img/filteronproject.png?raw=true" />
 </p>
 
