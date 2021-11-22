@@ -45,7 +45,7 @@ case $installpython in [nN][oO]|[nN]);;*)
   sudo apt upgrade
   sudo apt install curl build-essential libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
 
-  curl -O https://raw.githubusercontent.com/vidalmatheus/fsquare-install/main/fsquare.sh
+  curl -O https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
   tar -xvzf Python-${PYTHON_VERSION}.tgz
   cd Python-${PYTHON_VERSION}
 
