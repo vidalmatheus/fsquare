@@ -66,7 +66,7 @@ case $installpython in [nN][oO]|[nN]);;*)
 
   # Clear python installation files
   cd
-  sudo rm -rf Python-${PYTHON_VERSION}.tar.xz
+  sudo rm -rf Python-${PYTHON_VERSION}.tgz
   sudo rm -rf Python-${PYTHON_VERSION}
 esac
 
