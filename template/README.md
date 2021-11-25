@@ -32,7 +32,7 @@ By running the shell script `dev.sh`, you'll have the following commands to help
 
 - **dkdb**: Runs a dockerized *postgresql* database on port 5432
 
-- **dknginx**: Runs a dockerized *nginx* on port 80 to 8000 (back), 3000 (front), 3001 (mocked front)
+- **dknginx**: Runs a dockerized *nginx* on port 80 to 8000 (back), 3000 (front), 3001 (mocked front) and 3002 (metabase)
 
 - **pytest**: Runs python tests
 
