@@ -36,11 +36,11 @@ function devhelp {
 }
 
 function echo_blue {
-    echo -e "${LBLU}$1${RESTORE}";
+    echo -e "${LBLU}$1${RESTORE}"
 }
 
 function echo_green {
-    echo -e "${GREEN}$1${RESTORE}";
+    echo -e "${GREEN}$1${RESTORE}"
 }
 
 function dkdev {
@@ -67,7 +67,7 @@ function dkfulldev {
     invoke dkfulldev
 }
 
-echo_green "Welcome to the {{name}}'s development environment:"
+echo -e "${GREEN}Welcome to the ${YELLOW}{{name}}${RESTORE}${GREEN}'s development environment:${RESTORE}"
 echo_green "Tip: autocomplete works for the commands below \o/"
 echo_green "-------------------------------------------------------------"
 devhelp
