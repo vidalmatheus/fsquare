@@ -166,7 +166,7 @@ pip3.10 install virtualenv
 cd projects
 mkdir .virtualenv
 python3.10 -m virtualenv .virtualenv/$project_name
-. ~/projects/.virtualenv/$project_name/bin/activate
+source ~/projects/.virtualenv/$project_name/bin/activate
 cd $project_name
 
 
