@@ -26,9 +26,7 @@ Are you sure? (Y/n):
 
 # Download and execute our setup shell script
 ```bash
-wget https://raw.githubusercontent.com/vidalmatheus/fsquare/master/template/setup.sh
-chmod +x setup.sh
-./setup.sh # Shell script for a F-Square app installation.
+bash <(wget -qO- https://raw.githubusercontent.com/vidalmatheus/fsquare/master/template/setup.sh) # Shell script for a F-Square app installation.
 ```
 # Or you can do yourself the following steps:
 
