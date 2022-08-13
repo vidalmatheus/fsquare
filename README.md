@@ -153,7 +153,7 @@ export DB_USER=${project_name}
 export DB_PASSWORD=${project_name}
 export DB_HOST=localhost
 export DB_PORT=5432
-export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc
+export CACHALOT_ENABLED=1" | sudo tee -a ~/.bashrc | sudo tee -a ~/.zshrc >> /dev/null
 ```
 
 # 8. Configuring hosts
