@@ -3,7 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
-from main.models.auth import Profile
+from template.main.models.models_auth import Profile
 
 
 class DeleteNotAllowedAdmin(admin.ModelAdmin):

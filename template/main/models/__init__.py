@@ -1,3 +1,3 @@
 from . import (
-    auth
+    models_auth
 )

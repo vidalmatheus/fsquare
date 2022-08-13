@@ -1,4 +1,4 @@
 from . import (
-    auth,
-    crash
+    views_auth,
+    views_crash
 )
