@@ -1,5 +1,7 @@
 # F-square template with Vue.js and Django
 
+A template for a full-stack approach in software development using Vue.js and Django. As a 'front-end first' approach, we call it the F-Square approach 🙂
+
 
 ```
          ______      _____
